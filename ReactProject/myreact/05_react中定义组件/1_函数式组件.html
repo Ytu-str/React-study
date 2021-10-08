@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>hello_react</title>
+        <script type="text/javascript" src="../js/react.development.js"></script>
+        <script type="text/javascript" src="../js/react-dom.development.js"></script>
+        <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="test"></div>
+
+        <script type="text/babel">
+            //创建函数式组件
+            function MyComponent(){
+                console.log(this)
+                return <h1>我是用函数定义的组件（适用于简单组件的定义）</h1>
+            } 
+            //2.渲染组件到页面
+            ReactDOM.render(<MyComponent/>,document.getElementById("test"))
+        </script>
+    </body>
+
+</html>

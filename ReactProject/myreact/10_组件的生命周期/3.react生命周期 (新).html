@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>hello_react</title>
+        <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+        <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+        <script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="test"></div>
+
+
+        <script type="text/babel">
+        
+            class Count extends React.Component{
+
+                constructor(props){
+                    console.log('Count-constructor')
+                    super(props)
+                    this.state = {count:0}
+                }
+               
+                //组件挂在完毕时调用
+                componentDidMount(){
+                   console.log('Count-componentDidMount')
+                }
+                 //组件将要卸载时调用
+                 componentWillUnmount(){
+                   console.log('Count-componentWillUnmount')
+                }
+                //控制组件更新的阀门
+                shouldComponentUpdate(){
+                    console.log('Count-shouldComponentUpdate')
+                    return true
+                }
+               
+                //组件更新完毕时调用
+                componentDidUpdate(preProps,preState,snapshotValue){
+                   console.log('Count-componentDidUpdate',preProps,preState,snapshotValue)
+                }
+                //若state的值任何时候都取决于props,可以使用
+                static getDerivedStateFromProps(props){
+                    console.log('Count-getDerivedStateFromProps',props  )
+                    return null
+                }
+                //在更新前获取快照
+                getSnapshotBeforeUpdate(){
+                    console.log('getSnapshotBeforeUpdate')
+                    return 'ye'
+                }
+                //强制更新
+                force =()=>{
+                    this.forceUpdate()
+                }
+                death = ()=>{
+                    ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+                }
+                render(){
+                    console.log('Count-render')
+                    const {count} = this.state
+                    return (
+                        <div>
+                            <h2>当前求和为:{count}</h2>
+                            <button onClick={this.add}>点我+1</button>
+                            <button onClick={this.death}>卸载组件</button>
+                            <button onClick={this.force}>不更改状态强制更新</button>
+                        </div>
+                    )
+                }
+                add = ()=>{
+                    const {count} = this.state
+                    this.setState({count:count+1})
+                }
+            }
+          
+    
+            ReactDOM.render(<Count count={199}/>,document.getElementById("test")) 
+        </script>
+    </body>
+
+</html>
