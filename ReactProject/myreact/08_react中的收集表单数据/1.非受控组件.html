@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>hello_react</title>
+        <script type="text/javascript" src="../js/react.development.js"></script>
+        <script type="text/javascript" src="../js/react-dom.development.js"></script>
+        <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="test"></div>
+
+        <script type="text/babel">
+            class Login extends React.Component{
+                render(){
+                    return (
+                        <form action="http://www.baidu.com" onSubmit={this.handleSubmit}> 
+                            用户名:<input ref={c=>this.username=c} type="text" name="username"/>
+                            <br/>
+                            密码:<input ref={c=>this.password=c} type="password" name="passowrd"/>
+                            <br/>
+                            <button>登录</button>
+                        </form>
+                    )
+                }
+                handleSubmit = (event) =>{
+                    event.preventDefault()  //组织表单提交
+                    const {username,password} = this
+                    alert(username.value+password.value)
+                }
+            }
+            ReactDOM.render(<Login/>,document.getElementById("test")) 
+        </script>
+    </body>
+
+</html>
