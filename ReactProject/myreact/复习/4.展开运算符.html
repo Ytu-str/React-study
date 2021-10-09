@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>hello_react</title>
+        
+    </head>
+    <body>
+       
+
+        <script type="text/javascript">
+            let arr1 = [1,3,5,7,9]
+            let arr2 = [2,4,6,8,10]
+            console.log(...arr1)//展开一个数组
+            let arr3 = [...arr1,...arr2]
+
+
+            function sum(...numbers){
+                return numbers.reduce((preValue,currentValue)=>{
+                    return preValue + currentValue
+                })
+            }
+            console.log(sum(1,2,3,4))
+
+
+            let person = {name:'jay',age:'18'}
+            let person2 = {...person,name:'tutu'}  //复制一个对象
+        </script>
+    </body>
+
+</html>
